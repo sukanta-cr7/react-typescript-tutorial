@@ -2,12 +2,13 @@
 // import viteLogo from '/vite.svg'
 import './App.css'
 // import { Button } from './Components/Button'
-import Login from './Components/Login'
+// import Login from './Components/Login'
+import PasswordGenerator from './Components/PasswordGenerator'
 
 function App() {
 
   return (
-    <Login/>
+    <PasswordGenerator/>
     // <>
     //   <div>
     //     <a href="https://vite.dev" target="_blank">
