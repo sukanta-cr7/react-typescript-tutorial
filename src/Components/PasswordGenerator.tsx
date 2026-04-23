@@ -25,9 +25,17 @@ function PasswordGenerator(){
     }, [length, numberAllowed, charAllowed, setPassword])
 
     const copyPasswordToClipBoard = useCallback(() => {
-        passwordRef.current?.select();
-        passwordRef.current?.setSelectionRange(0, 10);
-        window.navigator.clipboard.writeText(Password)
+        // passwordRef.current?.select();
+        // passwordRef.current?.setSelectionRange(0, 10);
+
+        //Show & Copy the selected text
+        const currentValue = passwordRef.current;
+        if (!currentValue) return;
+        currentValue.focus(); //Required for visual selection
+        currentValue.setSelectionRange(0,10); //For visual selection
+
+        // window.navigator.clipboard.writeText(Password)
+        window.navigator.clipboard.writeText(currentValue.value.slice(0,10))
     }, [Password])
 
     useEffect(() => {passwordGenerator()}, [length, numberAllowed, charAllowed, passwordGenerator])
@@ -37,7 +45,7 @@ function PasswordGenerator(){
                 <h1 className="text-white text-center my-3">Password Generator</h1>
                 <div className="flex shadow rounded-lg overflow-hidden mb-4">
                     <input type="text" value={Password} className="outline-none w-full py-1 px-3" placeholder="Password" readOnly ref={passwordRef}/>
-                    <button className="outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0" onClick={copyPasswordToClipBoard}>Copy</button>
+                    <button className="outline-none bg-blue-700 hover:bg-blue-800 text-white px-3 py-0.5 shrink-0" onClick={copyPasswordToClipBoard}>Copy</button>
                 </div>
                 <div className="flex text-sm gap-x-2">
                     <div className="flex items-center gap-x-1">
