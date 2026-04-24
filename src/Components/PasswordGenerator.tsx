@@ -44,20 +44,47 @@ function PasswordGenerator(){
             <div className="w-full max-w-md mx-auto shadow-md rounded-lg px-4 my-8 text-orange-500 bg-gray-700">
                 <h1 className="text-white text-center my-3">Password Generator</h1>
                 <div className="flex shadow rounded-lg overflow-hidden mb-4">
-                    <input type="text" value={Password} className="outline-none w-full py-1 px-3" placeholder="Password" readOnly ref={passwordRef}/>
-                    <button className="outline-none bg-blue-700 hover:bg-blue-800 text-white px-3 py-0.5 shrink-0" onClick={copyPasswordToClipBoard}>Copy</button>
+                    <input 
+                        type="text" 
+                        value={Password} 
+                        className="outline-none w-full py-1 px-3" 
+                        placeholder="Password" 
+                        readOnly 
+                        ref={passwordRef}
+                    />
+                    <button 
+                        className="outline-none bg-blue-700 hover:bg-blue-800 text-white px-3 py-0.5 shrink-0" 
+                        onClick={copyPasswordToClipBoard}>Copy
+                    </button>
                 </div>
                 <div className="flex text-sm gap-x-2">
                     <div className="flex items-center gap-x-1">
-                        <input type="range" min={6} max={50} value={length} className="cursor-pointer" onChange={(e) => {setLength(parseInt(e.target.value))}} />
+                        <input 
+                            type="range" 
+                            min={6} 
+                            max={50} 
+                            value={length} 
+                            className="cursor-pointer" 
+                            onChange={(e) => {setLength(parseInt(e.target.value))}} 
+                        />
                         <label className="text-white">Length : {length}</label>
                     </div>
                     <div className="flex items-center gap-x-1">
-                        <input type="checkbox" defaultChecked={numberAllowed} id="numberAllowed" onChange={() => {setNumberAllowed((prev) => !prev)}} />
+                        <input 
+                            type="checkbox" 
+                            defaultChecked={numberAllowed} 
+                            id="numberAllowed" 
+                            onChange={() => {setNumberAllowed((prev) => !prev)}} 
+                        />
                         <label className="text-white">Numbers</label>
                     </div>
                     <div className="flex items-center gap-x-1">
-                        <input type="checkbox" defaultChecked={charAllowed} id="charAllowed" onChange={() => {setCharAllowed((prev) => !prev)}} />
+                        <input 
+                            type="checkbox" 
+                            defaultChecked={charAllowed} 
+                            id="charAllowed" 
+                            onChange={() => {setCharAllowed((prev) => !prev)}} 
+                        />
                         <label className="text-white">Characters</label>
                     </div>
                 </div>
