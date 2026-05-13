@@ -34,7 +34,7 @@ const InputBox : React.FC<InputBoxProps> = ({
                 </label>
                 <input
                     id={amountInputId}    
-                    className="outline-none w-full bg-transparent py-1.5"
+                    className="outline-none w-full bg-transparent py-1.5 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                     type="number"
                     placeholder="Amount"
                     disabled={amountDisable}
@@ -52,7 +52,7 @@ const InputBox : React.FC<InputBoxProps> = ({
                         
                         {currencyOptions.map((cur) => (
                             <option key={cur} value={cur}>
-                                {cur}
+                                {cur.toUpperCase()}
                             </option>
                         ))}
                 </select>

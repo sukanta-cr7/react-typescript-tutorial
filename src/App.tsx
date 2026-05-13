@@ -5,11 +5,13 @@ import './App.css'
 // import { Button } from './Components/Button'
 // import Login from './Components/Login'
 // import PasswordGenerator from './Components/PasswordGenerator'
+
 import {InputBox} from './Currency_Converter/Index'
 import useCurrencyInfo from './Hooks/useCurrencyInfo'
 
 function App() {
 
+//Currency Converter    
   const [amount, setAmount] = useState(0)
   const [from, setFrom] = useState("usd")
   const [to, setTo] = useState("inr")
@@ -83,6 +85,7 @@ function App() {
         </div>
     );
 
+//Password Generator
 //   return (
 //     <PasswordGenerator/>
 //     // <>
