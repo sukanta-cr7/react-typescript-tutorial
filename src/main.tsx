@@ -9,7 +9,7 @@ import Home from './React_Router/Home.tsx'
 import About from './React_Router/About.tsx'
 import Contact from './React_Router/Contact.tsx'
 import User from './React_Router/User.tsx'
-import Github from './React_Router/Github.tsx'
+import Github, { githubInfoLoader } from './React_Router/Github.tsx'
 
 // const router = createBrowserRouter([
 //   {
@@ -39,7 +39,10 @@ const router = createBrowserRouter(
       <Route path='about' element={<About />} />
       <Route path='contact' element={<Contact />} />
       <Route path='user/:UserId' element={<User />} />
-      <Route path='github' element={<Github />} />
+      <Route
+        loader={githubInfoLoader} 
+        path='github' 
+        element={<Github />} />
     </Route>
   )
 )
