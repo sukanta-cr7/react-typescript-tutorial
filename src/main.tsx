@@ -10,6 +10,10 @@ import About from './React_Router/About.tsx'
 import Contact from './React_Router/Contact.tsx'
 import User from './React_Router/User.tsx'
 import Github, { githubInfoLoader } from './React_Router/Github.tsx'
+import UserContextProvider from './Context/UserContextProvider.tsx'
+import Login from './Components/Login.tsx'
+import Profile from './Components/Profile.tsx'
+
 
 // const router = createBrowserRouter([
 //   {
@@ -40,8 +44,8 @@ const router = createBrowserRouter(
       <Route path='contact' element={<Contact />} />
       <Route path='user/:UserId' element={<User />} />
       <Route
-        loader={githubInfoLoader} 
-        path='github' 
+        loader={githubInfoLoader}
+        path='github'
         element={<Github />} />
     </Route>
   )
@@ -52,5 +56,9 @@ createRoot(document.getElementById('root')!).render(
     {/* <App /> */}
 
     <RouterProvider router={router}/>
+    {/* <UserContextProvider>
+      <Login />
+      <Profile />
+    </UserContextProvider> */}
   </React.StrictMode>,
 )

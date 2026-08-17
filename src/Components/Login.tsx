@@ -1,60 +1,26 @@
-import React, { useEffect, useState } from "react";
-import { hashPassword } from "../Utils/crypto";
-import { enforceSingleTab } from "../Utils/singleTab";
-import "../assets/css/site_login.css";
+import React, {useState, useContext} from "react";
+import UserContext from "../Context/UserContext";
 
-const Login: React.FC = () => {
+function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [captcha, setCaptcha] = useState("");
   const [error, setError] = useState("");
-  const [salt, setSalt] = useState("");
-
-  useEffect(() => {
-    enforceSingleTab();
-
-    // Fetch salt from backend
-    fetch("/api/auth/salt")
-      .then(res => res.json())
-      .then(data => setSalt(data.salt));
-  }, []);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!username) {
-      setError("Please enter User Id");
-      return;
-    }
-
-    if (!password) {
-      setError("Please enter Password");
-      return;
-    }
-
-    const hashedPassword = hashPassword(password, salt);
-
-    const response = await fetch("/api/auth/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        username,
-        password: hashedPassword,
-        captcha
-      })
-    });
-
-    const result = await response.json();
-
-    if (!result.success) {
-      setError(result.message);
-    } else {
-      window.location.href = "/dashboard";
-    }
+  const { setUser } = useContext(UserContext) as {
+    setUser: React.Dispatch<React.SetStateAction<{ username: string; password: string } | null>>;
   };
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!username || !password || !captcha) {
+      setError("Please fill in all fields.");
+      return;
+    }
+    setUser({ username, password });
+  };
   return (
-    <div className="card">
+    <div>
+
       <form className="login-box" onSubmit={handleSubmit}>
         <h1>Login</h1>
 
